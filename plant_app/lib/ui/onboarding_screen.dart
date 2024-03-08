@@ -83,27 +83,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             right: 30,
             child: Container(
               child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    if(currentIndex < 2){
-                      currentIndex++;
-                      if(currentIndex < 3){
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn 
-                          );
+                  onPressed: () {
+                    setState(() {
+                      if (currentIndex < 2) {
+                        currentIndex++;
+                        if (currentIndex < 3) {
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn);
+                        }
                       } else {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> const Login()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => const Login()));
                       }
-                    }
-                  });
-                },
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  size: 24,
-                  color: Colors.white,
-                ),
-              ),
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 24,
+                    color: Colors.white,
+                  )),
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
