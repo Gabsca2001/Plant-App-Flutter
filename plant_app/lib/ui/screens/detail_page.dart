@@ -17,6 +17,10 @@ class _DetailPageState extends State<DetailPage> {
     return !isFavorited;
   }
 
+  bool toggleIsSelected(bool isSelected) {
+    return !isSelected;
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -212,9 +216,18 @@ class _DetailPageState extends State<DetailPage> {
             Container(
               height: 50,
               width: 50,
-              child: const Icon(
-                Icons.shopping_cart, 
-                color: Colors.white,
+              child: IconButton(
+                onPressed: (){
+                  setState(() {
+                    bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
+                    _plantList[widget.plantId].isSelected = isSelected;
+                  });
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: _plantList[widget.plantId].isSelected == true ? Colors.white : Constants.primaryColor,
+                ),
+              
               ),
               decoration: BoxDecoration(
                 color: Constants.primaryColor.withOpacity(.5),
